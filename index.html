@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>ClaimsGuard Assurance | Digital Link Hub</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#002147",
+                        "surface": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#0b1c30",
+                        "secondary": "#735c00",
+                        "on-tertiary-fixed": "#341100",
+                        "tertiary": "#180500",
+                        "surface-container": "#e5eeff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "tertiary-container": "#3d1500",
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#000a1e",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#aec7f6",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-container": "#fed65b",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-tint": "#465f88",
+                        "on-background": "#0b1c30",
+                        "outline": "#74777f",
+                        "primary-fixed-dim": "#aec7f6",
+                        "secondary-fixed": "#ffe088",
+                        "on-tertiary-fixed-variant": "#6c391d",
+                        "on-tertiary-container": "#b97958",
+                        "inverse-surface": "#213145",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#574500",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-container": "#745c00",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#708ab5",
+                        "surface-container-high": "#dce9ff",
+                        "background": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed": "#001b3d",
+                        "on-surface-variant": "#44474e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "unit": "8px",
+                        "margin-desktop": "48px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hub-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+        }
+        .hub-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 32px rgba(0, 33, 71, 0.08);
+            border-bottom: 2px solid #735c00;
+        }
+        .hub-card:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0px 4px 12px rgba(0, 33, 71, 0.04);
+        }
+        .logo-glow {
+            filter: drop-shadow(0 0 8px rgba(0, 33, 71, 0.1));
+        }
+        /* Hide scrollbars for a clean app feel */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-on-surface items-center justify-start overflow-x-hidden p-4">
+
+    <!-- Mobile centered content container -->
+    <main class="w-full max-w-md mx-auto py-8 flex flex-col justify-start">
+        
+        <!-- Hero Identity Section -->
+        <section class="text-center mb-8 space-y-2">
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-primary-container rounded-full mb-4 logo-glow">
+                <img alt="Expert Claim Solutions Logo" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyhOCUg2FIwgR6JL9z9uvICZP5RmAeDula2dSwljGUZIjgE2m4srlvdwpS0PZbS1aLFxcZSS_c0ZTWwqZEe0_6YEHIgrUT5tuRnqLj2wrvy41whC0DVFvo6m1FgTLDYQKC7LuapxlbjrpQlmroTOVFYo-RP7Caa3NzNOtQQrLgGDzTSyGf_l1jMkl6awDk0QbSzUv1yQn4HgTauvqwCW7KCzjTRj1Kv8RdmvI_sh239zoZTyek7Hsyw2EuqkfChMF0EwVYtbHV2eQ"/>
+            </div>
+            <h2 class="text-3xl font-bold text-primary tracking-tight">Expert Claim Solutions</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs mx-auto italic">
+                "Protecting Your Interests with Integrity"
+            </p>
+            <h3 class="text-xl font-bold text-primary pt-4">All Our Links</h3>
+        </section>
+
+        <!-- Hub Cards List -->
+        <div class="flex flex-col gap-4">
+            
+            <!-- Special Priority Call Card -->
+            <a class="hub-card bg-secondary-container border-2 border-secondary/20 p-5 rounded-xl flex items-center gap-4 group shadow-md hover:shadow-lg transition-all relative overflow-hidden" href="tel:9985060600">
+                <div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-white flex-shrink-0 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container/30 opacity-75"></span>
+                    <svg class="w-6 h-6 relative z-10 text-secondary-container" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <span class="text-xs font-bold uppercase tracking-wider text-secondary block mb-0.5">Priority Support Call</span>
+                    <h3 class="text-2xl font-black text-primary tracking-tight leading-none group-hover:text-secondary transition-colors">
+                        +91 99850 60600
+                    </h3>
+                    <p class="font-body-md text-sm text-on-secondary-container/90 mt-1">Tap to speak with an expert immediately</p>
+                </div>
+                <div class="absolute -right-8 -top-8 w-24 h-24 bg-white/20 rounded-full blur-xl pointer-events-none"></div>
+            </a>
+
+            <!-- Card 1: Website -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://www.expertinsuranceclaims.com/" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-primary-container flex items-center justify-center text-white flex-shrink-0">
+                    <!-- Globe Icon SVG -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.905 0-5.54-.788-7.843-2.158m15.686 0a9 9 0 00-15.686 0" />
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">Official Website</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Explore our full suite of services</p>
+                </div>
+            </a>
+
+            <!-- Card: WhatsApp Chat -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://wa.me/9985060600" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-[#25D366] flex items-center justify-center text-white flex-shrink-0">
+                    <!-- WhatsApp SVG -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.458L0 24zm6.59-4.846c1.6.95 3.167 1.45 4.887 1.451 5.397 0 9.786-4.385 9.79-9.778.002-2.611-1.012-5.066-2.855-6.91-1.844-1.844-4.296-2.858-6.907-2.859-5.392 0-9.782 4.387-9.786 9.781-.001 1.765.46 3.49 1.332 5.021l-.518 1.896 1.957-.514zm11.787-8.077c-.301-.15-1.779-.879-2.05-.978-.272-.098-.47-.147-.667.147-.197.296-.764.962-.937 1.159-.173.197-.346.222-.647.072-1.144-.572-1.92-1.018-2.68-2.318-.2-.346-.02-.533.15-.703.153-.153.346-.403.52-.604.173-.201.23-.346.346-.576.115-.23.058-.43-.029-.604-.086-.173-.667-1.611-.913-2.203-.24-.579-.485-.5-.667-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.779-.726 2.03-1.429.25-.701.25-1.3.173-1.43-.075-.127-.272-.2-.573-.349z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">WhatsApp Chat</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Chat with us for quick support</p>
+                </div>
+            </a>
+
+            <!-- Card 2: LinkedIn -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://www.linkedin.com/company/expertclaimsolutions/?originalSubdomain=in" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-[#0077B5] flex items-center justify-center text-white flex-shrink-0">
+                    <!-- LinkedIn SVG -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">LinkedIn Insights</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Industry news and updates</p>
+                </div>
+            </a>
+
+            <!-- Card 3: X -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://x.com/expert_claim_?s=21" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-black flex items-center justify-center text-white flex-shrink-0">
+                    <!-- X SVG -->
+                    <svg class="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">X (Twitter)</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Follow our real-time updates</p>
+                </div>
+            </a>
+
+            <!-- Card 4: Instagram -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://www.instagram.com/expert_claim_solutions?utm_source=qr&igsh=MWhjMjlleDQxMnlu" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center text-white flex-shrink-0">
+                    <!-- Instagram SVG -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">Instagram</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Visual updates and culture</p>
+                </div>
+            </a>
+
+            <!-- Card 5: YouTube -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://www.youtube.com/@expertclaimsolutions" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-[#FF0000] flex items-center justify-center text-white flex-shrink-0">
+                    <!-- YouTube SVG -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.507 9.388.507 9.388.507s7.518 0 9.388-.507a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">YouTube</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Expert video guides</p>
+                </div>
+            </a>
+
+            <!-- Card 6: Facebook -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://www.facebook.com/?checkpoint_src=any" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-[#1877F2] flex items-center justify-center text-white flex-shrink-0">
+                    <!-- Facebook SVG -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">Facebook</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Community and news</p>
+                </div>
+            </a>
+
+            <!-- Card 7: Quora -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://www.quora.com/profile/Expert-Claim-Solutions-1/Why-Are-Insurance-Claims-Sometimes-Rejected-Many-claim-rejections-happen-for-reasons-that-policyholders-don-t-expect?ch=17&oid=249500095&share=e6b6c693&srid=3fDPXn&target_type=post" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-[#B92B27] flex items-center justify-center text-white flex-shrink-0">
+                    <!-- Quora SVG -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.062 19.336c-1.39 1.157-3.328 1.834-5.46 1.834-4.838 0-8.602-3.763-8.602-8.602 0-4.838 3.764-8.602 8.602-8.602 4.839 0 8.602 3.764 8.602 8.602 0 1.944-.657 3.75-1.748 5.214l1.378 1.378c.414.414.414 1.085 0 1.498l-3.336 3.336c-.414.414-1.085.414-1.498 0l-.634-.634zM12.062 6.57c-3.328 0-6.033 2.705-6.033 6.033 0 3.328 2.705 6.033 6.033 6.033 3.329 0 6.034-2.705 6.034-6.033 0-3.328-2.705-6.033-6.034-6.033z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">Quora</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Expert claim insights</p>
+                </div>
+            </a>
+
+            <!-- Card 8: Reddit -->
+            <a class="hub-card bg-white border border-outline-variant/30 p-4 rounded-xl flex items-center gap-4 group shadow-sm" href="https://www.reddit.com/u/Expert_Claim_2026/s/c4Kqwc7zit" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-[#FF4500] flex items-center justify-center text-white flex-shrink-0">
+                    <!-- Reddit SVG -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-5.99-1.72l1.23-3.87 3.39.77c.08 1.15 1.03 2.08 2.21 2.08 1.22 0 2.2-1 2.2-2.2s-.98-2.2-2.2-2.2c-.88 0-1.64.53-1.99 1.3l-3.8-.87c-.3-.07-.6.1-.69.4l-1.48 4.65c-2.32.04-4.52.68-6.19 1.7C3.46 9.73 2.57 9.25 1.6 9.25c-1.65 0-3 1.35-3 3 0 1.14.64 2.14 1.58 2.65-.05.2-.08.4-.08.6 0 3.72 4.47 6.75 10 6.75s10-3.03 10-6.75c0-.2-.03-.4-.08-.6.94-.51 1.58-1.51 1.58-2.65zm-16.5 1c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm9 3c-1.75 1.75-5.07 1.75-6.82 0-.2-.2-.2-.51 0-.71.2-.2.51-.2.71 0 1.36 1.36 4.04 1.36 5.4 0 .2-.2.51-.2.71 0 .2.2.2.51 0 .71zm-.25-1.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-primary group-hover:text-secondary transition-colors">Reddit</h3>
+                    <p class="font-body-md text-sm text-on-surface-variant">Join the discussion</p>
+                </div>
+            </a>
+
+            <!-- Card 9: Become a Partner (Bigger Navy CTA Button) -->
+            <a class="hub-card bg-primary-container border border-primary-container p-5 rounded-xl flex items-center gap-4 group text-white shadow-lg mt-2" href="https://expert-claims-g8p9.vercel.app/registeraspartner" target="_blank" rel="noopener noreferrer">
+                <div class="w-14 h-14 rounded-lg bg-white/10 flex items-center justify-center text-[#fed65b] flex-shrink-0">
+                    <!-- Lucide Handshake SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7">
+                        <path d="m11 17 2 2a1 1 0 1 0 3-3"/>
+                        <path d="m14 14 2.5 2.5"/>
+                        <path d="M2 13l2-2"/>
+                        <path d="M22 15l-1-1"/>
+                        <path d="M6 17l1-1"/>
+                        <path d="m9 14 1-1"/>
+                        <path d="M7 21h8.77a2 2 0 0 0 1.95-1.57l1.37-6a2 2 0 0 0-1.95-2.43H11"/>
+                        <path d="M21 15v1a2 2 0 0 1-2 2h-1"/>
+                        <path d="M4 19h2"/>
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <h3 class="font-title-lg text-lg font-bold text-white group-hover:text-secondary-container transition-colors">Become our partner</h3>
+                    <p class="font-body-md text-sm text-white/70">Collaborate with our expert team</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Atmospheric Boardroom Visual Element (Asymmetric Section) -->
+        <div class="mt-12 relative overflow-hidden rounded-xl h-[240px] flex items-center justify-center">
+            <img class="absolute inset-0 w-full h-full object-cover" alt="A sophisticated boardroom representing precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf4qtlQ7LGYl7W4rW0I1WEn5Y8ZxFc_1F000Rh0B3wd3TwkORi7CtSR4W_9mZWdx3V0Y5Aesk_jj5xgyw0gXw7NI15-JgkQCNSu52GHfHN9YjYyeg_O_aK-FhH9xjtDz-O1PLFZXsPSRYh0EWH6bqMX708ywZTIj9PyclwhIWEl1-FBsss-K9ynnGtlAjNmO-5lBufdNg0i1NmHVHmiAXtV15TcxMOLRKT95HobE7PPurUAT_Jr5gYsRS_EDThDXW2GMC2uhhCOjU"/>
+            <div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px]"></div>
+            <div class="relative z-10 text-center px-6">
+                <h3 class="text-xl font-bold text-white mb-2">Precision in Every Claim</h3>
+                <p class="text-sm text-white/90 max-w-xs mx-auto">We leverage advanced analytics and meticulous human oversight to ensure every policyholder receives the integrity they deserve.</p>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
